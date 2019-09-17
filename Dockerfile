@@ -7,15 +7,15 @@ RUN apt-get update \
 ADD chart/grafana /tmp/chart
 RUN cd /tmp && tar -czvf /tmp/grafana.tar.gz chart
 
-ADD schema.yaml /tmp/schema.yaml
+#ADD schema.yaml /tmp/schema.yaml
 
 ARG REGISTRY
 ARG TAG
 
-RUN cat /tmp/schema.yaml \
-    | env -i "REGISTRY=$REGISTRY" "TAG=$TAG" envsubst \
-    > /tmp/schema.yaml.new \
-    && mv /tmp/schema.yaml.new /tmp/schema.yaml
+#RUN cat /tmp/schema.yaml \
+ #   | env -i "REGISTRY=$REGISTRY" "TAG=$TAG" envsubst \
+ #   > /tmp/schema.yaml.new \
+  #  && mv /tmp/schema.yaml.new /tmp/schema.yaml
 
 
 EXPOSE 3000
